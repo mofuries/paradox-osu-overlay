@@ -6,7 +6,7 @@
 日本語の説明は[こちら](./README_JP.md)
 
 ## Overview
-This is a browser-based overlay created to enhance the appearance of your osu! streaming screen. Please feel free to use this for your streams or replay recordings!
+This is a browser-based overlay created to enhance the appearance of your osu! streaming screen. Please feel free to use this for your streams or replay recordings! (This does not alter the actual gameplay screen.)
 
 ## How to Use (with OBS Studio)
 ### Required Installations
