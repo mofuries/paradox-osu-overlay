@@ -2,6 +2,22 @@ if (navigator.language === "ja-JP" && !window.location.href.includes("JP")) {
     window.location.href = window.location.href + encodeURIComponent("index_JP.html");
 }
 
+function checkUpdate() {
+    document.getElementById('version').innerHTML = version;
+    fetch('https://api.github.com/repos/mofuries/paradox-osu-overlay/releases/latest')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.tag_name);
+        if (version === data.tag_name){
+            console.log("up-to-date.");
+            document.getElementById('version').innerHTML = version + `<span id="islatest" style="color: #ccff99;">&nbsp;(up-to-date.)</span>`;
+        } else {
+            console.log("update is available.");
+            document.getElementById('version').innerHTML = version + `<span id="islatest" style="color: #cc99ff;">&nbsp;(update is available.)</span>`;
+        }
+    });
+}
+
 function setLocal(variableName, variableValue) {
     localStorage.setItem(variableName, JSON.stringify(variableValue));
 }
@@ -312,6 +328,7 @@ function initializeSetting() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    checkUpdate();
     getLocalAll()
     .then(saved => {
         initializeSetting();

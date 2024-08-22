@@ -1,3 +1,6 @@
+const version = "v1.0.0";
+let isLatest;
+
 let saved = {
     apiKey: null,
     warning: true,
