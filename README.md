@@ -20,4 +20,5 @@ This is a browser-based overlay created to enhance the appearance of your osu! s
 
 3. Right-click the newly added browser source in OBS, and select **Interact**. A new window will open. Click inside this window to access the settings screen.
 
----
+## Support
+If you have any questions, feel free to DM me on X[(@mk_cou)](https://x.com/mk_cou). However, please note that my English isn't very good, so I appreciate your understanding.
