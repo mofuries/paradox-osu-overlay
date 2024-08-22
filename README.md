@@ -5,11 +5,11 @@
 
 ## 使用方法（OBS Studioを使用）
 ### 事前にインストールする必要があるもの
- ・[OBS Studio(Open Broadcanst Software®️)]{https://obsproject.com/}
- ・[StreamCompanion]{https://github.com/Piotrekol/StreamCompanion}
+ ・[OBS Studio(Open Broadcanst Software®)](https://obsproject.com/)
+ ・[StreamCompanion](https://github.com/Piotrekol/StreamCompanion)
 
 ### 手順
-1.本体をダウンロードし、paradoxフォルダをStreamCompanion\Files\Web\overlaysのなかに移動します。StreamCompanion\Files\Web\overlays\paradoxという風になっていれば大丈夫です。
+1.本体を[ダウンロード](main.zip)し、paradoxフォルダをStreamCompanion\Files\Web\overlaysのなかに移動します。StreamCompanion\Files\Web\overlays\paradoxという風になっていれば大丈夫です。
 
 2.OBS Studioを起動しソースの追加からブラウザを選択し、プロパティのURLにhttp://localhost:20727/overlays/paradox/を入力します。"OBSで音声を制御する"、"表示されていないときにソースをシャットダウンする"、"シーンがアクティブになったときにブラウザの表示を更新する"にチェックを入れOKを押してプロパティを閉じます。
 
