@@ -1,5 +1,8 @@
 # paradox-osu-overlay
 
+<img src="./sample1.png" width="48%"> <img src="./sample2.png" width="48%">
+<img src="./sample3.png" width="48%"> <img src="./sample4.png" width="48%">
+
 ## 概要
 こちらはosu!の配信画面を華やかにするために作成したブラウザベースのオーバーレイです。StreamCompanion、およびブラウザを表示できる配信ソフト(例.OBS Studio)を使用する必要があります。
 
