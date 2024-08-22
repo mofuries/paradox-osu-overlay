@@ -13,7 +13,7 @@ This is a browser-based overlay created to enhance the appearance of your osu! s
 ### Steps
 1. Download the main package [here](https://github.com/mofuries/paradox-osu-overlay/archive/refs/heads/main.zip), and move the **paradox** folder into **StreamCompanion\Files\Web\overlays**. Ensure the path is **StreamCompanion\Files\Web\overlays\paradox**.
 
-2. Launch OBS Studio, add a new source, and select "Browser". In the properties, enter the URL [**http://localhost:20727/overlays/paradox/**](http://localhost:20727/overlays/paradox/). Check the boxes for "**Control audio via OBS**", "**Shutdown source when not visible**", and "**Refresh browser when the scene becomes active**". Click OK to close the properties.
+2. Launch OBS Studio, add a new source, and select "Browser". In the properties, enter the URL [**http://localhost:20727/overlays/paradox/**](http://localhost:20727/overlays/paradox/). Check the boxes for "**Control audio via OBS**", "**Shutdown source when not visible**", and "**Refresh browser when scene becomes active**". Click OK to close the properties.
 
 3. Right-click the newly added browser source in OBS, and select **Interact**. A new window will open. Click inside this window to access the settings screen.
 
