@@ -1,16 +1,20 @@
 # paradox-osu-overlay
 
-## 概要
-こちらはosu!の配信画面を華やかにするために作成したブラウザベースのオーバーレイです。StreamCompanion、およびブラウザを表示できる配信ソフト(例.OBS Studio)を使用する必要があります。
+日本語の説明は[こちら](./README_JP.md)
 
-## 使用方法（OBS Studioを使用）
-### 事前にインストールする必要があるもの
-・[OBS Studio(Open Broadcanst Software®)](https://obsproject.com/)  
-・[StreamCompanion](https://github.com/Piotrekol/StreamCompanion)  
+## Overview
+This is a browser-based overlay created to enhance the appearance of your osu! streaming screen. It requires the use of StreamCompanion and streaming software capable of displaying a browser (e.g., OBS Studio).
 
-### 手順
-1.本体を[ダウンロード](https://github.com/mofuries/paradox-osu-overlay/archive/refs/heads/main.zip)し、**paradox**フォルダを **StreamCompanion\Files\Web\overlays** のなかに移動します。 **StreamCompanion\Files\Web\overlays\paradox** という風になっていれば大丈夫です。
+## How to Use (with OBS Studio)
+### Required Installations
+- [OBS Studio (Open Broadcaster Software®)](https://obsproject.com/)  
+- [StreamCompanion](https://github.com/Piotrekol/StreamCompanion)  
 
-2.OBS Studioを起動しソースの追加からブラウザを選択し、プロパティのURLに[**http://localhost:20727/overlays/paradox/**](http://localhost:20727/overlays/paradox/)を入力します。"**OBSで音声を制御する**"、"**表示されていないときにソースをシャットダウンする**"、"**シーンがアクティブになったときにブラウザの表示を更新する**"にチェックを入れOKを押してプロパティを閉じます。
+### Steps
+1. Download the main package [here](https://github.com/mofuries/paradox-osu-overlay/archive/refs/heads/main.zip), and move the **paradox** folder into **StreamCompanion\Files\Web\overlays**. Ensure the path is **StreamCompanion\Files\Web\overlays\paradox**.
 
-3.ソース内から先ほど追加したブラウザを右クリックし、**対話**を選択すると別のウィンドウが開きます。ウィンドウ内をクリックすると設定画面が出てきます。
+2. Launch OBS Studio, add a new source, and select "Browser". In the properties, enter the URL [**http://localhost:20727/overlays/paradox/**](http://localhost:20727/overlays/paradox/). Check the boxes for "**Control audio via OBS**", "**Shutdown source when not visible**", and "**Refresh browser when the scene becomes active**". Click OK to close the properties.
+
+3. Right-click the newly added browser source in OBS, and select **Interact**. A new window will open. Click inside this window to access the settings screen.
+
+---
