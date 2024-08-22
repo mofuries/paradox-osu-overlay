@@ -84,6 +84,9 @@ function reloadUserData(user = tokenValue.banchoId) {
         if (user === "osu!") {
             user = tokenValue.banchoId;
         }
+        if (user == null) {
+            user = "";
+        }
         if (tokenValue.osuIsRunning === 0) {
             return;
         }
