@@ -5,8 +5,8 @@
 
 ## 使用方法（OBS Studioを使用）
 ### 事前にインストールする必要があるもの
-　・[OBS Studio(Open Broadcanst Software®)](https://obsproject.com/)  
-　・[StreamCompanion](https://github.com/Piotrekol/StreamCompanion)  
+・[OBS Studio(Open Broadcanst Software®)](https://obsproject.com/)  
+・[StreamCompanion](https://github.com/Piotrekol/StreamCompanion)  
 
 ### 手順
 1.本体を[ダウンロード](https://github.com/mofuries/paradox-osu-overlay/archive/refs/heads/main.zip)し、**paradox**フォルダを **StreamCompanion\Files\Web\overlays** のなかに移動します。 **StreamCompanion\Files\Web\overlays\paradox** という風になっていれば大丈夫です。
