@@ -9,8 +9,8 @@
  ・[StreamCompanion](https://github.com/Piotrekol/StreamCompanion)
 
 ### 手順
-1.本体を[ダウンロード](main.zip)し、paradoxフォルダをStreamCompanion\Files\Web\overlaysのなかに移動します。StreamCompanion\Files\Web\overlays\paradoxという風になっていれば大丈夫です。
+1.本体を[ダウンロード](https://github.com/mofuries/paradox-osu-overlay/archive/refs/heads/main.zip)し、paradoxフォルダをStreamCompanion\Files\Web\overlaysのなかに移動します。StreamCompanion\Files\Web\overlays\paradoxという風になっていれば大丈夫です。
 
-2.OBS Studioを起動しソースの追加からブラウザを選択し、プロパティのURLにhttp://localhost:20727/overlays/paradox/を入力します。"OBSで音声を制御する"、"表示されていないときにソースをシャットダウンする"、"シーンがアクティブになったときにブラウザの表示を更新する"にチェックを入れOKを押してプロパティを閉じます。
+2.OBS Studioを起動しソースの追加からブラウザを選択し、プロパティのURLに(http://localhost:20727/overlays/paradox/)を入力します。"OBSで音声を制御する"、"表示されていないときにソースをシャットダウンする"、"シーンがアクティブになったときにブラウザの表示を更新する"にチェックを入れOKを押してプロパティを閉じます。
 
 3.ソース内から先ほど追加したブラウザを右クリックし、対話を選択すると別のウィンドウが開きます。ウィンドウ内をクリックすると設定画面が出てきます。
