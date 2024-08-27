@@ -129,7 +129,6 @@ function drawKeyOverlay() {
   }
 
   const renderKeyStatus = function() {
-    //ctx_key.reset();
     ctx_key.fillStyle = `rgba(255, 255, 255, 0.8)`;
     ctx_key.fillRect(0, 0, key.size, keyCanvas.height);
     ctx_key.globalCompositeOperation = 'source-over';

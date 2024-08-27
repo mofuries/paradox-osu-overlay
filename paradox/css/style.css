@@ -1154,7 +1154,7 @@ body{
         margin-left: var(--keypress4);
     }
     #k1::before, #k2::before, #k3::before, #k4::before{
-        font-family: 'Bruno Ace SC Mono', 'Bruno Ace SC';
+        font-family: 'Bruno Ace SC';
         filter: brightness(150%) saturate(70%);
         font-weight: 400;
         position: absolute;
@@ -1190,7 +1190,7 @@ body{
         font-size: var(--keyfontsize4);
     }
     #k1::after, #k2::after, #k3::after, #k4::after{
-        font-family: 'Bruno Ace SC Mono', 'Bruno Ace SC';
+        font-family: 'Bruno Ace SC';
         font-weight: 400;
         position: absolute;
         display: flex;

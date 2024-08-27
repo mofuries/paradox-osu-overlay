@@ -272,11 +272,11 @@ precise.onmessage = (event) => {
 /*diff*/    if (cache.diffName !== tokenValue.diffName || cache.creator !== tokenValue.creator) {
               cache.diffName = tokenValue.diffName;
               cache.creator = tokenValue.creator;
-              formatTime = { minute: Math.floor(tokenValue.totaltime / 60000) , second: Math.floor(tokenValue.totaltime / 1000 % 60) };
               diffcontainer.style.transition = "all 0.2s";
               diffcontainer.style.opacity = 0;
               setTimeout(() => {
                 difflavel.innerHTML = cache.diffName;
+                formatTime = { minute: Math.floor(tokenValue.totaltime / modSpeed / 60000) , second: Math.floor(tokenValue.totaltime / modSpeed / 1000 % 60) };
                 totalTime.innerHTML = `(${formatTime.minute < 10 ? '0' : ''}${formatTime.minute}:${formatTime.second < 10 ? '0' : ''}${formatTime.second})`;
                 mapper.innerHTML = `&nbsp;<div class="mapper"><span class="secondary-font">//</span>&nbsp;${cache.creator}`;
                 difflavel.style.width = 'auto';
@@ -354,7 +354,9 @@ precise.onmessage = (event) => {
                 const mStarsParts = tokenValue.mStars.toFixed(2).split(".");
                 const mStarsInteger = mStarsParts[0];
                 const mStarsDecimal = mStarsParts[1];
-              
+
+                formatTime = { minute: Math.floor(tokenValue.totaltime / modSpeed / 60000) , second: Math.floor(tokenValue.totaltime / modSpeed / 1000 % 60) };
+                totalTime.innerHTML = `(${formatTime.minute < 10 ? '0' : ''}${formatTime.minute}:${formatTime.second < 10 ? '0' : ''}${formatTime.second})`;
                 SR.innerHTML = `${mStarsInteger}<span id="dot">.</span><span id="srdecimal">${mStarsDecimal}</span>`;
                 mapdetail.style.transition = "all 0s";
                 mapdetail.style.transform = "translateY(-100%)";
@@ -458,7 +460,6 @@ precise.onmessage = (event) => {
 
             if (cache.skin !== tokenValue.skin) {
               cache.skin = tokenValue.skin;
-              //skinBG.src = `http://${hostname}:${port}/Skins/${encodeURIComponent(tokenValue.skin)}/${encodeURIComponent('menu-background.jpg')}`;
               skinBG.src = `${place.skin}/${encodeURIComponent('menu-background.jpg')}`;
             }
 
@@ -569,12 +570,6 @@ function handleAudioError(status) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  backgroundRefresh();
-  hideGameUIRefresh();
-  drawTriangles();
-});
-
 function drawClock(canvas, ctx) {
   ctx.reset();
   const progress = (tokenValue.time / tokenValue.totaltime * 100000).toFixed(2);
@@ -589,20 +584,23 @@ function drawClock(canvas, ctx) {
   ctx.fill();
 }
 
-
-
 const audioControl = setInterval(() => {
 
   if (audioReadError === false && saved.enableAudioCapture === true) {
-    if (cache.rawStatus === 2){
-      if (cache.modsArray.includes("DT") || cache.modsArray.includes("NC") || cache.modsArray.includes("Double Time") || cache.modsArray.includes("Nightcore")) {
+    if (cache.modsArray.includes("DT") || cache.modsArray.includes("NC") || cache.modsArray.includes("Double Time") || cache.modsArray.includes("Nightcore")) {
+      if (cache.rawStatus === 2){  
         changePlaybackRateAudio(1.5);
-        modSpeed = 1.5;
-      } else if (cache.modsArray.includes("HT") || cache.modsArray.includes("Half Time")) {
-        changePlaybackRateAudio(0.75);
-        modSpeed = 0.75;
       }
+      modSpeed = 1.5;
+    } else if (cache.modsArray.includes("HT") || cache.modsArray.includes("Half Time")) {
+      if (cache.rawStatus === 2){  
+        changePlaybackRateAudio(0.75);
+      }
+      modSpeed = 0.75;
     } else {
+      modSpeed = 1.0;
+    }
+    if (cache.rawStatus != 2){  
       changePlaybackRateAudio(1.0);
     }
   
@@ -704,7 +702,7 @@ function convertVariable() {
     diffName: data.beatmap.version,
     mode: data.settings.mode.number,
     starsNomod: 0,
-    totaltime: data.beatmap.time.mp3Length,
+    totaltime: data.beatmap.time.lastObject,
     bpm: data.beatmap.stats.bpm.common,
     cs: data.beatmap.stats.cs.original,
     ar: data.beatmap.stats.ar.original,

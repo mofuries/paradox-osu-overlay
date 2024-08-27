@@ -88,7 +88,6 @@ function calculateLuminanceFactor(rgb) {
     const [R, G, B] = rgb;
     const brightness = (0.2126 * R + 0.7152 * G + 0.0722 * B) / 255;
     const LuminanceFactor = (-2/3) * brightness + 1
-    //const LuminanceFactor = brightness ** 2 - 2.5 * brightness + 2;
     return LuminanceFactor;
 }
 
@@ -254,10 +253,10 @@ function resizeImage(img, width, height) {
     canvas.height = height;
     const ctx = canvas.getContext('2d');
 
-    if ((imgWidth * height / width) < imgHeight) { //指定した解像度より縦長の場合
+    if ((imgWidth * height / width) < imgHeight) {
         const aspectError = (imgHeight - (imgWidth * height / width)) / 2;
         ctx.drawImage(img, 0, aspectError, imgWidth, (imgWidth * height / width), 0, 0, width, height);
-    } else { //指定した解像度より横長の場合
+    } else {
         const aspectError = (imgWidth - (imgHeight * width / height)) / 2;
         ctx.drawImage(img, aspectError, 0, (imgHeight * width / height), imgHeight, 0, 0, width, height);
     }
@@ -297,7 +296,4 @@ function hideGameUIRefresh() {
       ctx.fillRect(canvas.width - keyHeight, canvas.height / 2 - keyWidth / 2, keyHeight, keyWidth);
     }
     shader.applyShaderToCanvas(canvas, 5, 5);
-    // ctx.globalCompositeOperation = 'difference';
-    // ctx.fillStyle = "#ffffff";
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 }

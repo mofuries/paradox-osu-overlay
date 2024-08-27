@@ -1,5 +1,5 @@
-const version = "v1.1.0a";
-const channel = "Dev";
+const version = "v1.1.0";
+const channel = "";
 let isLatest;
 
 let saved = {
@@ -13,7 +13,7 @@ let saved = {
     background: {
       normalizeBrightness: true,
       opacity: 30,
-      blur: 5.0,
+      blur: 10.0,
       contrast: 0.7
     },
     customImage: null,
@@ -261,7 +261,6 @@ let cache = {
     fullPath: ''
   },
   modsArray: null,
-/*The property name must be a valid token name. These will also be used for requests to websocket.*/
   username: '',  
   artistRoman: '',
   artistUnicode: '',
