@@ -8,14 +8,18 @@ function checkUpdate() {
     .then(response => response.json())
     .then(data => {
         console.log(data.tag_name);
-        if (version === data.tag_name){
-            console.log("up-to-date.");
-            document.getElementById('islatest').innerHTML = `up-to-date`;
-            document.getElementById('islatest').style.background = "linear-gradient(to bottom, #7df06c, #70d761)";
+        if (channel != "Dev") {
+            if (version === data.tag_name){
+                document.getElementById('islatest').innerHTML = `up-to-date`;
+                document.getElementById('islatest').style.background = "linear-gradient(to bottom, #7df06c, #70d761)";
+            } else {
+                document.getElementById('islatest').innerHTML = `update available`;
+                document.getElementById('islatest').style.background = "linear-gradient(to bottom, #9a77f2, #8c6cdc)";
+            }
         } else {
-            console.log("update is available.");
-            document.getElementById('islatest').innerHTML = `update available`;
-            document.getElementById('islatest').style.background = "linear-gradient(to bottom, #9a77f2, #8c6cdc)";
+            document.getElementById('islatest').innerHTML = `Dev`;
+            document.getElementById('islatest').style.background = "linear-gradient(to bottom, #505050, #404040)";
+            document.getElementById('islatest').style.color = "#ffffff";
         }
     });
 }

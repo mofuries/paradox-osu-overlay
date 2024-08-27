@@ -1,4 +1,5 @@
-const version = "v1.0.0";
+const version = "v1.1.0a";
+const channel = "Dev";
 let isLatest;
 
 let saved = {
