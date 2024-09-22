@@ -5,8 +5,7 @@ let isLatest;
 let saved = {
     apiKey: null,
     warning: true,
-    enableAudioCapture: false,
-    enableAudioVisualizer: false,
+    enableAudioVisualizer: true,
     enableCustomColor: false,
     customColor: [100, 100, 100],
     enableBackground: true,

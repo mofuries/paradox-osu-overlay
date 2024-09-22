@@ -15,10 +15,13 @@ sc.onerror = (error) => {
 };
 
 let place = {
-  overlay: `http://${hostname}:${port}/overlays/paradox`,
+  overlay: `http://${hostname}:${port}${window.location.pathname.split('/').slice(0, -1).join('/')}`,
   beatmap: `http://${hostname}:${port}/Songs`,
   skin: `http://${hostname}:${port}/Skins/`
 };
+if (!place.overlay.endsWith('/')) {
+  place.overlay += '/';
+}
 
 sc.onmessage = (event) => {
 
@@ -26,6 +29,7 @@ sc.onmessage = (event) => {
 
 /*receive*/ Object.assign(tokenValue, JSON.parse(event.data));
             Object.assign(tokenValue, JSON.parse(tokenValue.keyOverlay));
+            tokenValue.resultName = tokenValue.username;
             tokenValue.audio.fullPath = encodeURIComponent(`${tokenValue.dir}/${tokenValue.mp3Name}`);
             tokenValue.background.fullPath = encodeURIComponent(`${tokenValue.dir}/${tokenValue.backgroundImageFileName}`);
             place.skin = `http://${hostname}:${port}/Skins/${tokenValue.skin}`;
@@ -60,11 +64,11 @@ sc.onmessage = (event) => {
 
               if (tokenValue.rawStatus === 7) { //result
                 setTimeout(() => {
-                  reloadUserData(tokenValue.username);
+                  reloadUserData(tokenValue.resultName);
                   if (saved.apiKey !== null && saved.apiKey !== '') {
                     interfaceShow();
                   }
-                }, 100);
+                }, 300);
               }
 
               if (tokenValue.rawStatus === 2) { //playing || watching
@@ -73,8 +77,11 @@ sc.onmessage = (event) => {
                 panelImage.src = currentBG.src;
                 profileDetail.style.height = '100px';
                 background.classList = "";
-                showElement([visualizer, mods, gameOverlay, grade, pp, document.getElementById('progress'), document.getElementById('uihide')]);
+                showElement([mods, gameOverlay, grade, pp, document.getElementById('progress'), document.getElementById('uihide')]);
                 hideElement([avatar, document.getElementById('paddingleft'), document.getElementById('paddingright')]);
+                if (saved.enableAudioVisualizer === true) {
+                  showElement(visualizer);
+                }
                 if (keyOverlayRunning === false) {
                   drawKeyOverlay();
                 }
@@ -479,7 +486,7 @@ sc.onmessage = (event) => {
 
 currentBG.onload = () => {
 
-  if (loadingBGcount === 1 && currentBG.src === `${place.overlay}/assets/loading.png`) {
+  if (loadingBGcount === 1 && currentBG.src === `${place.overlay}assets/loading.png`) {
     if (skinBG.naturalWidth !== 0) {
       currentBG.src = skinBG.src;
     } else {
@@ -503,7 +510,7 @@ currentBG.onload = () => {
     fade(background, shadedCanvas, 1000, true);
     fade(banner, shadedBannerCanvas, 1000);
     fade(artwork, resizeImage(currentBG, artwork.width, artwork.height), 1000).then(() => {
-      if (currentBG.src === `${place.overlay}/assets/loading.png` && loadingBGcount !== 1) {
+      if (currentBG.src === `${place.overlay}assets/loading.png` && loadingBGcount !== 1) {
         loadingBGcount++;
         cache.background.fullPath = null;
       } else if (firstLoad) {
@@ -569,7 +576,7 @@ function drawClock(canvas, ctx) {
 
 const audioControl = setInterval(() => {
 
-  if (audioReadError === false && saved.enableAudioCapture === true) {
+  if (audioReadError === false) {
     if (cache.modsArray.includes("DT") || cache.modsArray.includes("NC") || cache.modsArray.includes("Double Time") || cache.modsArray.includes("Nightcore")) {
       if (cache.rawStatus === 2){  
         changePlaybackRateAudio(1.5);

@@ -23,10 +23,13 @@ tosu.onerror = (error) => {
 };
 
 let place = {
-  overlay: `http://${hostname}:${port}/paradox`,
+  overlay: `http://${hostname}:${port}${window.location.pathname.split('/').slice(0, -1).join('/')}`,
   beatmap: `http://${hostname}:${port}/Songs`,
   skin: `http://${hostname}:${port}/files/skin`
 };
+if (!place.overlay.endsWith('/')) {
+  place.overlay += '/';
+}
 let data = {};
 let pdata = {};
 
@@ -76,11 +79,11 @@ precise.onmessage = (event) => {
 
               if (tokenValue.rawStatus === 7) { //result
                 setTimeout(() => {
-                  reloadUserData(tokenValue.username);
+                  reloadUserData(tokenValue.resultName);
                   if (saved.apiKey !== null && saved.apiKey !== '') {
                     interfaceShow();
                   }
-                }, 100);
+                }, 300);
               }
 
               if (tokenValue.rawStatus === 2) { //playing || watching
@@ -89,8 +92,11 @@ precise.onmessage = (event) => {
                 panelImage.src = currentBG.src;
                 profileDetail.style.height = '100px';
                 background.classList = "";
-                showElement([visualizer, mods, gameOverlay, grade, pp, document.getElementById('progress'), document.getElementById('uihide')]);
+                showElement([mods, gameOverlay, grade, pp, document.getElementById('progress'), document.getElementById('uihide')]);
                 hideElement([avatar, document.getElementById('paddingleft'), document.getElementById('paddingright')]);
+                if (saved.enableAudioVisualizer === true) {
+                  showElement(visualizer);
+                }
                 if (keyOverlayRunning === false) {
                   drawKeyOverlay();
                 }
@@ -354,7 +360,7 @@ precise.onmessage = (event) => {
                 const mStarsParts = tokenValue.mStars.toFixed(2).split(".");
                 const mStarsInteger = mStarsParts[0];
                 const mStarsDecimal = mStarsParts[1];
-
+                
                 formatTime = { minute: Math.floor(tokenValue.totaltime / modSpeed / 60000) , second: Math.floor(tokenValue.totaltime / modSpeed / 1000 % 60) };
                 totalTime.innerHTML = `(${formatTime.minute < 10 ? '0' : ''}${formatTime.minute}:${formatTime.second < 10 ? '0' : ''}${formatTime.second})`;
                 SR.innerHTML = `${mStarsInteger}<span id="dot">.</span><span id="srdecimal">${mStarsDecimal}</span>`;
@@ -495,7 +501,7 @@ precise.onmessage = (event) => {
 
 currentBG.onload = () => {
 
-  if (loadingBGcount === 1 && currentBG.src === `${place.overlay}/assets/loading.png`) {
+  if (loadingBGcount === 1 && currentBG.src === `${place.overlay}assets/loading.png`) {
     if (skinBG.naturalWidth !== 0) {
       currentBG.src = skinBG.src;
     } else {
@@ -519,7 +525,7 @@ currentBG.onload = () => {
     fade(background, shadedCanvas, 1000, true);
     fade(banner, shadedBannerCanvas, 1000);
     fade(artwork, resizeImage(currentBG, artwork.width, artwork.height), 1000).then(() => {
-      if (currentBG.src === `${place.overlay}/assets/loading.png` && loadingBGcount !== 1) {
+      if (currentBG.src === `${place.overlay}assets/loading.png` && loadingBGcount !== 1) {
         loadingBGcount++;
         cache.background.fullPath = null;
       } else if (firstLoad) {
@@ -586,7 +592,7 @@ function drawClock(canvas, ctx) {
 
 const audioControl = setInterval(() => {
 
-  if (audioReadError === false && saved.enableAudioCapture === true) {
+  if (audioReadError === false) {
     if (cache.modsArray.includes("DT") || cache.modsArray.includes("NC") || cache.modsArray.includes("Double Time") || cache.modsArray.includes("Nightcore")) {
       if (cache.rawStatus === 2){  
         changePlaybackRateAudio(1.5);
@@ -719,6 +725,7 @@ function convertVariable() {
     rankedStatus: data.beatmap.status.number,
     rawStatus: data.state.number,
     totalAudioTime: data.beatmap.time.mp3Length,
+    resultName: data.resultsScreen.playerName,
     osuIsRunning: true
   };
 }

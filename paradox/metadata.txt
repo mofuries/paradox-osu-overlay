@@ -1,0 +1,6 @@
+Usecase: obs-overlay
+Name:  paradox
+Author:  mofuries
+CompatibleWith:  tosu, streamCompanion
+Resolution:  1920x1080
+authorLinks:  https://github.com/mofuries

@@ -123,12 +123,12 @@ function reloadUserData(user = tokenValue.banchoId) {
                 item1.innerHTML = '<span class="profilelabel">Performance&nbsp;&nbsp;&nbsp;</span>' + `<span class="userpp">${addCommasToNumber(cacheUserData.pp_raw)}&nbsp;pp</span>`
                 item2.innerHTML = '<span class="profilelabel">Ranked Score&nbsp;&nbsp;&nbsp;</span>' + `<span class="rankedscore">${addCommasToNumber(cacheUserData.ranked_score)}</span>`;
                 item3.innerHTML = '<span class="colored hash hilight">#</span>' + `<span class="rank">${addCommasToNumber(cacheUserData.pp_rank)}</span>`;
-                item4.innerHTML = '<span class="colored hash hilight">&nbsp;#</span>' + `<span class="ranksub">${addCommasToNumber(cacheUserData.pp_country_rank)}</span><img class="countryflag" src="https://flagcdn.com/${cacheUserData.country.toLowerCase()}.svg">`;
+                item4.innerHTML = '<span class="colored hash hilight">&nbsp;#</span>' + `<span class="ranksub">${addCommasToNumber(cacheUserData.pp_country_rank)}</span><img class="countryflag" src="assets/flags/${cacheUserData.country.toUpperCase()}.png">`;
                 box1.innerHTML = `<span class="plus">${parseFloat(cacheUserData.pp_raw) >= parseFloat(saved.cacheUserData.pp_raw) ? '+' : '-'}</span>${addCommasToNumber(parseFloat(Math.abs(cacheUserData.pp_raw - saved.cacheUserData.pp_raw)).toFixed(2))}&nbsp;pp`;
                 box2.innerHTML = `<span class="plus">${parseFloat(cacheUserData.ranked_score) >= parseFloat(saved.cacheUserData.ranked_score) ? '+' : '-'}</span>${addCommasToNumber(Math.abs(cacheUserData.ranked_score - saved.cacheUserData.ranked_score))}`;
                 box3.innerHTML = `<span class="rankplus">${parseFloat(saved.cacheUserData.pp_rank) >= parseFloat(cacheUserData.pp_rank) ? '+' : '-'}</span><span class="countrank">${addCommasToNumber(Math.abs(cacheUserData.pp_rank - saved.cacheUserData.pp_rank))}</span>`;
                 box4.innerHTML = `<span class="rankplus">${parseFloat(saved.cacheUserData.pp_country_rank) >= parseFloat(cacheUserData.pp_country_rank) ? '+' : '-'}</span><span class="countrank">${addCommasToNumber(Math.abs(cacheUserData.pp_country_rank - saved.cacheUserData.pp_country_rank))}</span>`;
-                document.getElementById('detailitem1').innerHTML = `<span id="username">${cacheUserData.username}</span><img class="countryflag" src="https://flagcdn.com/${cacheUserData.country.toLowerCase()}.svg">`;
+                document.getElementById('detailitem1').innerHTML = `<span id="username">${cacheUserData.username}</span><img class="countryflag" src="assets/flags/${cacheUserData.country.toUpperCase()}.png">`;
                 document.getElementById('detailitem2').innerHTML = '<span class="profilelabel">Level:&nbsp;&nbsp;&nbsp;</span>' + cacheUserData.level;
                 document.getElementById('detailitem3').innerHTML = '<span class="profilelabel">Accuracy:&nbsp;&nbsp;&nbsp;</span>' + parseFloat(cacheUserData.accuracy).toFixed(2) + '%';
                 document.getElementById('detailitem4').innerHTML = '<span class="profilelabel">Playcount:&nbsp;&nbsp;&nbsp;</span>' + addCommasToNumber(cacheUserData.playcount) + `&nbsp;&nbsp;(&nbsp;${Math.floor(cacheUserData.total_seconds_played / 3600)}&nbsp;hours&nbsp;)`;
@@ -409,7 +409,6 @@ document.getElementById('custompanelbgreset').addEventListener('click', event =>
 document.getElementById('continue').addEventListener('click', function(event) {
     event.preventDefault();
     document.getElementById('startup').style.opacity = 0;
-    visualizer.style.opacity = 1;
     setTimeout(() => {
         document.getElementById('startup').style.visibility = "hidden";
         saved.startup = false;
