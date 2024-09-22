@@ -16,7 +16,7 @@ This is a browser-based overlay created to enhance the appearance of your osu! s
 ### Steps (Using StreamCompanion)
 1. Download the files and move the **paradox** folder to **StreamCompanion/Files/Web/overlays/**. Make sure the path is **StreamCompanion/Files/Web/overlays/paradox**.
 
-2. Open your streaming software (e.g., OBS Studio), add a new source, and select "Browser". Enter a resolution of 1920x1080 and input the URL [**http://127.0.0.1:24050/paradox/**](http://127.0.0.1:24050/paradox/) into the properties. Check both "**Shutdown source when not visible**" and "**Refresh browser when scene becomes active**", then click OK to close the properties window.
+2. Open your streaming software (e.g., OBS Studio), add a new source, and select "Browser". Enter a resolution of 1920x1080 and input the URL [**http://127.0.0.1:20727/overlays/paradox/**](http://127.0.0.1:20727/overlays/paradox/) into the properties. Check both "**Shutdown source when not visible**" and "**Refresh browser when scene becomes active**", then click OK to close the properties window.
 
 ### Using tosu
 1. Download the files and move the **paradox** folder to **tosu/static/**. Make sure the path is **tosu/static/paradox**.
