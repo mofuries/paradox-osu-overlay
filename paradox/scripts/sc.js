@@ -44,6 +44,12 @@ sc.onmessage = (event) => {
 /*time*/    cache.time = tokenValue.time;
             adjustedTime = Math.max((cache.time + 0.1).toFixed(2),0);
             timeDifference = (Math.abs(getCurrentTime() - adjustedTime)).toFixed(2);
+
+            if (saved.enableHpBar === true && tokenValue.rawStatus === 2) {
+              document.documentElement.style.setProperty('--playerhp', `${(((tokenValue.playerHpSmooth ** 2) / 400).toFixed(2)) - 1}%`);
+            } else {
+              document.documentElement.style.setProperty('--playerhp', `0%`);
+            }
             
 /*status*/  if (cache.rawStatus !== tokenValue.rawStatus) {
               if (tokenValue.rawStatus !== 2) {
