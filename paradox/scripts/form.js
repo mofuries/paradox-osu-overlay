@@ -341,6 +341,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('startup').style.visibility = "visible";
             document.getElementById('startup').style.opacity = 1;
         }
+        if (saved.enableBackground === false) {
+            document.getElementById('backgroundwrapper').style.opacity = 0;
+        }
     })
     .catch(error => {
         console.error('Error in getLocalAll:', error);
